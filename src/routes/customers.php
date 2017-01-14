@@ -31,7 +31,7 @@ $app->get('/api/customers', function(Request $request, Response $response){
         $db = null;
         echo json_encode($customers);
     } catch(PDOException $e){
-        echo '{"error": {"text": '.$e->getMessage().'}';
+        echo '{"error": {"text": '.$e->getMessage().'} }';
     }
 });
 
@@ -52,7 +52,7 @@ $app->get('/api/customer/{id}', function(Request $request, Response $response){
         $db = null;
         echo json_encode($customer);
     } catch(PDOException $e){
-        echo '{"error": {"text": '.$e->getMessage().'}';
+        echo '{"error": {"text": '.$e->getMessage().'} }';
     }
 });
 
@@ -87,10 +87,10 @@ $app->post('/api/customer/add', function(Request $request, Response $response){
 
         $stmt->execute();
 
-        echo '{"notice": {"text": "Customer Added"}';
+        echo '{"notice": {"text": "Customer Added"} }';
 
     } catch(PDOException $e){
-        echo '{"error": {"text": '.$e->getMessage().'}';
+        echo '{"error": {"text": '.$e->getMessage().'} }';
     }
 });
 
@@ -133,10 +133,10 @@ $app->put('/api/customer/update/{id}', function(Request $request, Response $resp
 
         $stmt->execute();
 
-        echo '{"notice": {"text": "Customer Updated"}';
+        echo '{"notice": {"text": "Customer Updated"} }';
 
     } catch(PDOException $e){
-        echo '{"error": {"text": '.$e->getMessage().'}';
+        echo '{"error": {"text": '.$e->getMessage().'} }';
     }
 });
 
@@ -155,8 +155,8 @@ $app->delete('/api/customer/delete/{id}', function(Request $request, Response $r
         $stmt = $db->prepare($sql);
         $stmt->execute();
         $db = null;
-        echo '{"notice": {"text": "Customer Deleted"}';
+        echo '{"notice": {"text": "Customer Deleted"} }';
     } catch(PDOException $e){
-        echo '{"error": {"text": '.$e->getMessage().'}';
+        echo '{"error": {"text": '.$e->getMessage().'} }';
     }
 });
